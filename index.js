@@ -61,7 +61,7 @@ inquirer
             type: 'list',
             message: 'What kind of license should your project have?',
             name: 'license',
-            choices: ['MIT', 'BSD', 'GPL']
+            choices: ['MIT', 'BSD', 'APACHE']
         },
         {
             type: 'input',
@@ -94,9 +94,15 @@ inquirer
 
 const generateHTML = (obj) => {
     let licenseText =""
-    if(obj.license == "MIT"){
+    if(obj.license == "MIT")
         licenseText = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
-    }
+    else 
+    if(obj.license == "BSD")
+        licenseText = "[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
+    else
+     if(obj.license == "APACHE") 
+        licenseText = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+}
 
     return `# ${obj.name}
 

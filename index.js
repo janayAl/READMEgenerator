@@ -102,7 +102,7 @@ const generateHTML = (obj) => {
     else
      if(obj.license == "APACHE") 
         licenseText = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
-}
+
 
     return `# ${obj.name}
 

@@ -2,92 +2,108 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
-const util = require('util');
+// const util = require('util');
+// const generateMarkdown = require('./utils/generateMarkdown')
 
 
 
 
-// TODO: Create an array of questions for user input
-const questions =
-    [
-        'What is your GitHub username?',
-        'What is your email address?',
-        'Please write a brief description of your project',
-        'What kind of license should your project have?',
-        'What command should be run to install dependencies?',
-        'What command should be run to run tests?',
-        'What does the user need to know about using the repo?',
-        'What does the user need to know about contributing to the repo?'
-    ];
-const generateHTML = (ANSWERS) => "";
+// // TODO: Create an array of questions for user input
+// const questions =
+//     [
+//         'What is your GitHub username?',
+//         'What is your email address?',
+//         'Please write a brief description of your project',
+//         'What kind of license should your project have?',
+//         'What command should be run to install dependencies?',
+//         'What command should be run to run tests?',
+//         'What does the user need to know about using the repo?',
+//         'What does the user need to know about contributing to the repo?'
+//     ];
 
-// TODO: Create a function to write README file
 
-function writeToFile(fileName, data) { }
+// // TODO: Create a function to write README file
 
-// TODO: Create a function to initialize app
-function init() { }
-// inquirer.prompt(questions)
-//     .then((inquirerResponse, data) => {
-//         console.log("Creating a ReadMe file");
-//         fs.writeFileSync("ReadMe.md", inquirerResponse, data);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })
+// function writeToFile(fileName, data) { }
 
-// Function call to initialize app
-init();
+// // TODO: Create a function to initialize app
+// function init() { }
+// // inquirer.prompt(questions)
+// //     .then((inquirerResponse, data) => {
+// //         console.log("Creating a ReadMe file");
+// //         fs.writeFileSync("ReadMe.md", inquirerResponse, data);
+// //     })
+// //     .catch((err) => {
+// //         console.log(err);
+// //     })
+
+// // Function call to initialize app
+// init();
 
 inquirer
     .prompt([
         {
             type: 'input',
             message: 'What is your GitHub username?',
-            name: 'name',
+            name: 'github',
         },
         {
             type: 'input',
             message: 'What is your email address?',
-            name: 'input',
+            name: 'email',
         },
         {
             type: 'input',
             message: 'What is your project name?',
-            name: 'input',
+            name: 'name',
         },
         {
-            type: 'checkbox',
+            type: 'list',
             message: 'What kind of license should your project have?',
-            name: 'stack',
+            name: 'license',
             choices: ['MIT', 'BSD', 'GPL']
         },
         {
             type: 'input',
             message: 'What command should be run to install dependencies?',
-            name: 'input',
+            name: 'install',
         },
         {
             type: 'input',
             message: 'What command should be run to run tests? ',
-            name: 'input',
+            name: 'test',
         },
         {
             type: 'input',
             message: 'What does the user need to know about using the repo?',
-            name: 'input',
+            name: 'use',
         },
         {
             type: 'input',
             message: 'What does the user need to know about contributing to the repo?',
-            name: 'input',
+            name: 'contribution',
         },
     ])
     .then((answers) => {
+        console.log(answers)
         const htmlPageContent = generateHTML(answers);
-    })
-
-fs.writeFile('index.html', htmlPageContent, (err) =>
-    err ? console.log(err) : console.log('Successfully created index.html!')
+    fs.writeFile('README.md', htmlPageContent, (err) =>
+    err ? console.log(err) : console.log('Successfully created readme file')
 );
-  });
+    });
+
+const generateHTML = (obj) => {
+    let licenseText =""
+    if(obj.license == "MIT"){
+        licenseText = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+    }
+
+    return `# ${obj.name}
+
+## Contact Me
+
+[Github Profile](http://github.com/${obj.github})
+
+${licenseText}
+`
+};

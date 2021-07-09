@@ -49,6 +49,11 @@ inquirer
         },
         {
             type: 'input',
+            message: 'Describe your project.',
+            name: 'description',
+        },
+        {
+            type: 'input',
             message: 'What is your email address?',
             name: 'email',
         },
@@ -106,10 +111,20 @@ const generateHTML = (obj) => {
 
     return `# ${obj.name}
 
-## Contact Me
-
+## Questions
 [Github Profile](http://github.com/${obj.github})
 
+## License
 ${licenseText}
+## Installation
+${obj.install}
+## Tests
+${obj.test}
+## Contribution
+${obj.contribute}
+## Description
+${obj.description}
+
 `
+
 };

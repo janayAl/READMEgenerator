@@ -1,7 +1,7 @@
 # readme generator
 
 ## Questions
-[Github Profile](http://github.com/janay Allen)
+[Github Profile](http://github.com/janayAl)
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
